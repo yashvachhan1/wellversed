@@ -385,14 +385,19 @@
   document.querySelectorAll('.options').forEach(function(group) {
     group.querySelectorAll('.option-btn').forEach(function(btn) {
       var inp = btn.querySelector('input');
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
         if (inp.type === 'radio') {
-          group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+          group.querySelectorAll('.option-btn').forEach(function(b) {
+            b.classList.remove('selected');
+            b.querySelector('input').checked = false;
+          });
           btn.classList.add('selected');
           inp.checked = true;
         } else {
-          btn.classList.toggle('selected');
-          inp.checked = btn.classList.contains('selected');
+          var isSelected = btn.classList.contains('selected');
+          btn.classList.toggle('selected', !isSelected);
+          inp.checked = !isSelected;
         }
         syncHidden(group);
       });
