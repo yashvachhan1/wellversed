@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellversed Athletic Support Programme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0f0f;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(10,15,15,0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,200,180,0.15);
+  }
+
+  .header-left { width: 40px; }
+
+  .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+  }
+  .logo-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00e5cc;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+  }
+  .logo-tagline {
+    font-size: 9px;
+    letter-spacing: 4px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+  .header-right {
+    width: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .header-right img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('ChatGPT Image May 29, 2026, 02_15_56 PM 1.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,15,15,0.35) 0%,
+      rgba(10,15,15,0.08) 25%,
+      rgba(10,15,15,0.45) 55%,
+      rgba(10,15,15,0.90) 73%,
+      rgba(10,15,15,0.98) 100%
+    );
+  }
+
+  /* ── CONTENT ── */
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .programme-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .hero-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 62px;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 62px;
+    letter-spacing: 3.72px;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .hero-title .highlight { color: #00e5cc; }
+
+  .hero-subtitle {
+    font-size: 12px;
+    color: #bbb;
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+  .hero-subtitle .dot {
+    margin: 0 8px;
+    color: #666;
+  }
+
+  /* ── FORM ── */
+  .form-wrap {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .field {
+    flex: 1;
+    height: 54px;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 10px;
+    padding: 0 20px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .field::placeholder {
+    color: rgba(255,255,255,0.28);
+    opacity: 1;
+  }
+  .field:focus {
+    border-color: #00e5cc;
+    box-shadow: inset 0 0 0 100px rgba(0,229,204,0.08);
+  }
+
+  .btn-apply {
+    height: 54px;
+    min-width: 150px;
+    padding: 0 28px;
+    background: #00e5cc;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.6px; /* 4% of 15px */
+    text-transform: uppercase;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+    -webkit-appearance: none;
+    line-height: 1.2;
+  }
+  .btn-apply:hover { background: #00c4ad; }
+
+  .form-note {
+    font-size: 11px;
+    color: #555;
+    margin-top: 14px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .form-note::before,
+  .form-note::after {
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    background: #333;
+  }
+
+  /* ── TABLET ── */
+  @media (max-width: 768px) {
+    .header { padding: 12px 20px; }
+    .logo-name { font-size: 18px; }
+    .logo-tagline { font-size: 8px; letter-spacing: 2.5px; }
+    .hero-content { padding: 0 20px; }
+    .hero-title { font-size: 40px; line-height: 42px; letter-spacing: 2.4px; }
+    .form-row { gap: 10px; }
+    .form-wrap { max-width: 100%; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 500px) {
+    .header { padding: 10px 16px; }
+    .logo-name { font-size: 16px; letter-spacing: 1.5px; }
+    .logo-tagline { font-size: 7px; letter-spacing: 2px; }
+    .header-right img { width: 26px; height: 26px; }
+    .hero { padding-bottom: 40px; }
+    .hero-content { padding: 0 14px; }
+    .programme-label { font-size: 8px; letter-spacing: 3px; margin-bottom: 8px; }
+    .hero-title { font-size: 28px; line-height: 30px; letter-spacing: 1.68px; margin-bottom: 10px; }
+    .hero-subtitle { font-size: 10px; letter-spacing: 1px; margin-bottom: 20px; }
+    .hero-subtitle .dot { margin: 0 5px; }
+
+    /* Stack all 3 inputs, button full width */
+    .form-row { flex-direction: column; gap: 8px; margin-bottom: 8px; }
+    .form-bottom { flex-direction: column; gap: 8px; }
+    .field { flex: none; width: 100%; height: 54px; font-size: 14px; padding: 0 18px; }
+    .btn-apply { flex: none; height: 54px; width: 100%; min-width: unset; font-size: 13px; letter-spacing: 2px; }
+    .form-note { font-size: 10px; margin-top: 12px; }
+    .form-note::before,
+    .form-note::after { width: 30px; }
+  }
+
+  @media (max-width: 360px) {
+    .hero-title { font-size: 24px; line-height: 26px; }
+    .logo-tagline { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left"></div>
+  <div class="logo">
+    <span class="logo-name">wellversed</span>
+    <span class="logo-tagline">Maximising Human Potential</span>
+  </div>
+  <div class="header-right">
+    <img src="svg.png" alt="profile">
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <img src="8445b706ce3a0c6f38e9fd25ca256207fb2bb02e.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;pointer-events:none;mix-blend-mode:multiply;opacity:0.85;">
+
+  <div class="hero-content">
+    <p class="programme-label">Wellversed Athletic Support Programme</p>
+
+    <h1 class="hero-title">
+      Apply for <span class="highlight">Athletic</span> Support
+    </h1>
+
+    <p class="hero-subtitle">
+      Training <span class="dot">·</span> Competitions <span class="dot">·</span> Recovery <span class="dot">·</span> Performance
+    </p>
+
+    <div class="form-wrap">
+      <div class="form-row">
+        <input class="field" type="text" placeholder="Full Name" autocomplete="off">
+        <input class="field" type="tel" placeholder="Phone Number" autocomplete="off">
+      </div>
+      <div class="form-bottom form-row" style="margin-bottom:0;">
+        <input class="field" type="email" placeholder="Email Address" autocomplete="off">
+        <button class="btn-apply">Apply Now</button>
+      </div>
+      <p class="form-note">Takes less than a minute to apply</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILLOUT FULLSCREEN OVERLAY -->
+<div id="fillout-overlay" style="display:none;position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:9999;">
+  <div id="fillout-embed-wrap" style="width:100%;height:100%;"></div>
+</div>
+
+<!-- Load Fillout script once -->
+<script src="https://server.fillout.com/embed/v1/"></script>
+
+<script>
+  document.querySelector('.btn-apply').addEventListener('click', function(e) {
+    e.preventDefault();
+
+    var name  = document.querySelector('input[placeholder="Full Name"]').value.trim();
+    var phone = document.querySelector('input[placeholder="Phone Number"]').value.trim();
+    var email = document.querySelector('input[placeholder="Email Address"]').value.trim();
+
+    if (!name || !phone || !email) {
+      alert('Please fill all fields.');
+      return;
+    }
+
+    var wrap = document.getElementById('fillout-embed-wrap');
+    wrap.innerHTML = '';
+
+    var embed = document.createElement('div');
+    embed.setAttribute('data-fillout-id', '1feKQAFWTEus');
+    embed.setAttribute('data-fillout-embed-type', 'fullscreen');
+    embed.style.width  = '100%';
+    embed.style.height = '100%';
+    embed.setAttribute('data-fillout-inherit-parameters', '');
+    embed.setAttribute('data-fillout-prefill', JSON.stringify({
+      "Name": name,
+      "Mobile Number": phone,
+      "Email Address": email
+    }));
+
+    wrap.appendChild(embed);
+
+    // Re-init Fillout embeds
+    if (window.filloutEmbeds && window.filloutEmbeds.initializeEmbeds) {
+      window.filloutEmbeds.initializeEmbeds();
+    }
+
+    document.getElementById('fillout-overlay').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
