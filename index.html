@@ -307,33 +307,7 @@
   </div>
 </section>
 
-<!-- Fillout fullscreen overlay -->
-<div id="fo" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;"></div>
-
 <script>
-  var _prefillData = {};
-
-  function fillFormFields() {
-    var fields = {
-      'Name': _prefillData.name,
-      'Mobile Number': _prefillData.phone,
-      'Email Address': _prefillData.email
-    };
-
-    var filled = 0;
-    Object.keys(fields).forEach(function(label) {
-      var input = document.querySelector('input[aria-label="' + label + '"]');
-      if (input && fields[label]) {
-        var nativeInput = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value');
-        nativeInput.set.call(input, fields[label]);
-        input.dispatchEvent(new Event('input', { bubbles: true }));
-        input.dispatchEvent(new Event('change', { bubbles: true }));
-        filled++;
-      }
-    });
-    return filled;
-  }
-
   document.querySelector('.btn-apply').addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -346,32 +320,7 @@
       return;
     }
 
-    _prefillData = { name: name, phone: phone, email: email };
-
-    var fo = document.getElementById('fo');
-    fo.innerHTML = '';
-
-    var embed = document.createElement('div');
-    embed.setAttribute('data-fillout-id', '1feKQAFWTEus');
-    embed.setAttribute('data-fillout-embed-type', 'fullscreen');
-    embed.setAttribute('data-fillout-inherit-parameters', '');
-    embed.style.cssText = 'width:100%;height:100%;';
-    fo.appendChild(embed);
-
-    var s = document.createElement('script');
-    s.src = 'https://server.fillout.com/embed/v1/';
-    s.onload = function() {
-      // Try filling every 300ms for up to 8 seconds
-      var attempts = 0;
-      var interval = setInterval(function() {
-        attempts++;
-        var filled = fillFormFields();
-        if (filled >= 3 || attempts > 26) clearInterval(interval);
-      }, 300);
-    };
-    fo.appendChild(s);
-
-    fo.style.display = 'block';
+    window.location.href = 'https://forms.fillout.com/t/1feKQAFWTEus';
   });
 </script>
 
