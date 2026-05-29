@@ -176,14 +176,14 @@
 <div class="banner">
   <h1>Wellversed Athlete Support Program</h1>
 
-  <div class="banner-img">
-    <img src="ChatGPT Image May 29, 2026, 02_15_56 PM 1.jpg" alt="Wellversed Athletes">
-  </div>
-
   <div class="banner-desc">
     <p>The Wellversed Athlete Support Program helps Indian athletes overcome financial and resource barriers by providing support for training, coaching, nutrition, recovery, equipment, and competition preparation.</p>
     <p>Through access to expert guidance, world-class resources, and a strong support ecosystem across 100+ sports, Wellversed aims to help athletes unlock their full potential and perform at the highest level.</p>
     <p>Driven by the mission of maximizing human potential, Wellversed is committed to empowering athletes and contributing to a stronger sporting ecosystem, with the long-term vision of making India a global leader in athletic excellence.</p>
+  </div>
+
+  <div class="banner-img">
+    <img src="ChatGPT Image May 29, 2026, 02_15_56 PM 1.jpg" alt="Wellversed Athletes">
   </div>
 </div>
 
@@ -418,6 +418,25 @@
   // Form submit via fetch
   document.getElementById('apply-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    // Validate all required option groups
+    var requiredGroups = [
+      { id: 'user-type-val', label: 'User Type (About You)' },
+      { id: 'sports-val',    label: 'Sports' },
+      { id: 'goal-val',      label: 'Goal' },
+      { id: 'event-val',     label: 'Preparing for Event' },
+      { id: 'exp-val',       label: 'Experience Level' },
+      { id: 'coach-val',     label: 'Worked with Coach' },
+      { id: 'supp-val',      label: 'Using Supplements' },
+      { id: 'req-val',       label: 'Support Required' }
+    ];
+    for (var i = 0; i < requiredGroups.length; i++) {
+      var el = document.getElementById(requiredGroups[i].id);
+      if (!el || !el.value) {
+        alert('Please select: ' + requiredGroups[i].label);
+        return;
+      }
+    }
+
     var btn = this.querySelector('.btn-submit');
     btn.textContent = 'Submitting...';
     btn.disabled = true;
