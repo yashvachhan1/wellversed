@@ -307,13 +307,10 @@
   </div>
 </section>
 
-<!-- FILLOUT FULLSCREEN OVERLAY -->
-<div id="fillout-overlay" style="display:none;position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:9999;">
-  <div id="fillout-embed-wrap" style="width:100%;height:100%;"></div>
+<!-- FILLOUT IFRAME OVERLAY -->
+<div id="fo" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:#000;">
+  <iframe id="fi" style="width:100%;height:100%;border:none;"></iframe>
 </div>
-
-<!-- Load Fillout script once -->
-<script src="https://server.fillout.com/embed/v1/"></script>
 
 <script>
   document.querySelector('.btn-apply').addEventListener('click', function(e) {
@@ -328,29 +325,13 @@
       return;
     }
 
-    var wrap = document.getElementById('fillout-embed-wrap');
-    wrap.innerHTML = '';
+    var url = 'https://forms.fillout.com/t/1feKQAFWTEus'
+      + '?Name=' + encodeURIComponent(name)
+      + '&Mobile%20Number=' + encodeURIComponent(phone)
+      + '&Email%20Address=' + encodeURIComponent(email);
 
-    var embed = document.createElement('div');
-    embed.setAttribute('data-fillout-id', '1feKQAFWTEus');
-    embed.setAttribute('data-fillout-embed-type', 'fullscreen');
-    embed.style.width  = '100%';
-    embed.style.height = '100%';
-    embed.setAttribute('data-fillout-inherit-parameters', '');
-    embed.setAttribute('data-fillout-prefill', JSON.stringify({
-      "Name": name,
-      "Mobile Number": phone,
-      "Email Address": email
-    }));
-
-    wrap.appendChild(embed);
-
-    // Re-init Fillout embeds
-    if (window.filloutEmbeds && window.filloutEmbeds.initializeEmbeds) {
-      window.filloutEmbeds.initializeEmbeds();
-    }
-
-    document.getElementById('fillout-overlay').style.display = 'block';
+    document.getElementById('fi').src = url;
+    document.getElementById('fo').style.display = 'block';
   });
 </script>
 
