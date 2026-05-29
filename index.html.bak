@@ -307,6 +307,11 @@
   </div>
 </section>
 
+<!-- FILLOUT IFRAME OVERLAY -->
+<div id="fo" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:#000;">
+  <iframe id="fi" style="width:100%;height:100%;border:none;"></iframe>
+</div>
+
 <script>
   document.querySelector('.btn-apply').addEventListener('click', function(e) {
     e.preventDefault();
@@ -320,10 +325,13 @@
       return;
     }
 
-    window.location.href = 'form.html'
-      + '?name=' + encodeURIComponent(name)
-      + '&phone=' + encodeURIComponent(phone)
-      + '&email=' + encodeURIComponent(email);
+    var url = 'https://forms.fillout.com/t/1feKQAFWTEus'
+      + '?Name=' + encodeURIComponent(name)
+      + '&Mobile%20Number=' + encodeURIComponent(phone)
+      + '&Email%20Address=' + encodeURIComponent(email);
+
+    document.getElementById('fi').src = url;
+    document.getElementById('fo').style.display = 'block';
   });
 </script>
 

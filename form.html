@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wellversed Athlete Support Programme - Apply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0f1318;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(10,15,15,0.95);
+    border-bottom: 1px solid rgba(0,200,180,0.15);
+  }
+  .logo { display: flex; flex-direction: column; align-items: center; }
+  .logo-name { font-size: 20px; font-weight: 700; color: #00e5cc; letter-spacing: 2px; text-transform: lowercase; }
+  .logo-tagline { font-size: 8px; letter-spacing: 4px; color: #fff; text-transform: uppercase; font-weight: 600; margin-top: 2px; }
+  .header-right img { width: 28px; height: 28px; object-fit: contain; }
+
+  /* HERO BANNER */
+  .banner {
+    background: linear-gradient(135deg, #0a1a1a 0%, #0d2020 100%);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,229,204,0.1);
+  }
+  .banner h1 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .banner p { font-size: 13px; color: #aaa; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  /* FORM CONTAINER */
+  .form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #00e5cc;
+    display: inline-block;
+  }
+
+  /* FIELD */
+  .field-wrap { margin-bottom: 20px; }
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 8px;
+  }
+  .field-label .req { color: #00e5cc; margin-left: 3px; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    width: 100%;
+    height: 50px;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 0 16px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus { border-color: #00e5cc; background: rgba(0,229,204,0.05); }
+  input::placeholder { color: rgba(255,255,255,0.3); }
+
+  /* RADIO / CHECKBOX OPTIONS */
+  .options { display: flex; flex-wrap: wrap; gap: 10px; }
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #ccc;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .option-btn input { display: none; }
+  .option-btn:hover { border-color: #00e5cc; color: #fff; }
+  .option-btn.selected {
+    border-color: #00e5cc;
+    background: rgba(0,229,204,0.12);
+    color: #00e5cc;
+    font-weight: 600;
+  }
+
+  /* SUBMIT */
+  .submit-wrap { text-align: center; margin-top: 40px; }
+  .btn-submit {
+    background: #00e5cc;
+    color: #0a0f0f;
+    border: none;
+    border-radius: 10px;
+    padding: 0 60px;
+    height: 54px;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-submit:hover { background: #00c4ad; transform: translateY(-1px); }
+
+  /* SUCCESS */
+  #success-msg {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  #success-msg h2 { font-size: 28px; color: #00e5cc; margin-bottom: 12px; }
+  #success-msg p { color: #aaa; font-size: 15px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .header { padding: 12px 16px; }
+    .banner h1 { font-size: 22px; }
+    .form-container { padding: 24px 16px 50px; }
+    .section-title { font-size: 16px; }
+    .options { gap: 8px; }
+    .option-btn { padding: 9px 12px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div style="width:36px;"></div>
+  <div class="logo">
+    <span class="logo-name">wellversed</span>
+    <span class="logo-tagline">Maximising Human Potential</span>
+  </div>
+  <div class="header-right">
+    <img src="svg.png" alt="profile">
+  </div>
+</header>
+
+<!-- BANNER -->
+<div class="banner">
+  <h1>Wellversed Athlete Support Program</h1>
+  <p>Fill in your details below to apply for the Athletic Support Programme. Takes less than 3 minutes.</p>
+</div>
+
+<!-- FORM -->
+<div class="form-container">
+  <form id="apply-form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="8561b398-fbd2-45fd-8640-1628b18f7304">
+    <input type="hidden" name="subject" value="New Wellversed Athletic Support Application">
+    <input type="hidden" name="redirect" value="false">
+    <input type="checkbox" name="botcheck" style="display:none;">
+
+    <!-- BASIC INFORMATION -->
+    <div class="section">
+      <div class="section-title">Basic Information</div>
+
+      <div class="field-wrap">
+        <label class="field-label">Name <span class="req">*</span></label>
+        <input type="text" name="Name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="field-wrap">
+        <label class="field-label">Mobile Number <span class="req">*</span></label>
+        <input type="tel" name="Mobile Number" placeholder="Enter your mobile number" required>
+      </div>
+
+      <div class="field-wrap">
+        <label class="field-label">Email Address <span class="req">*</span></label>
+        <input type="email" name="Email Address" placeholder="Enter your email address" required>
+      </div>
+
+      <div class="field-wrap">
+        <label class="field-label">State <span class="req">*</span></label>
+        <input type="text" name="State" placeholder="Enter your state" required>
+      </div>
+    </div>
+
+    <!-- ABOUT YOU -->
+    <div class="section">
+      <div class="section-title">About You</div>
+      <div class="field-wrap">
+        <label class="field-label">Which best describes you? <span class="req">*</span></label>
+        <input type="hidden" name="User Type" id="user-type-val" required>
+        <div class="options" id="user-type">
+          <label class="option-btn"><input type="radio" name="_ut" value="Athlete"> Athlete</label>
+          <label class="option-btn"><input type="radio" name="_ut" value="Coach"> Coach</label>
+          <label class="option-btn"><input type="radio" name="_ut" value="Athlete & Coach"> Athlete & Coach</label>
+          <label class="option-btn"><input type="radio" name="_ut" value="Fitness Enthusiast"> Fitness Enthusiast</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPORTS -->
+    <div class="section">
+      <div class="section-title">Sports</div>
+      <div class="field-wrap">
+        <label class="field-label">What sport or fitness activity are you involved in? <span class="req">*</span></label>
+        <input type="hidden" name="Sports" id="sports-val" required>
+        <div class="options" id="sports">
+          <label class="option-btn"><input type="checkbox" value="Powerlifting"> Powerlifting</label>
+          <label class="option-btn"><input type="checkbox" value="Bodybuilding"> Bodybuilding</label>
+          <label class="option-btn"><input type="checkbox" value="Running"> Running</label>
+          <label class="option-btn"><input type="checkbox" value="Cycling"> Cycling</label>
+          <label class="option-btn"><input type="checkbox" value="CrossFit"> CrossFit</label>
+          <label class="option-btn"><input type="checkbox" value="Cricket"> Cricket</label>
+          <label class="option-btn"><input type="checkbox" value="Football"> Football</label>
+          <label class="option-btn"><input type="checkbox" value="Other"> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- GOAL -->
+    <div class="section">
+      <div class="section-title">Goal</div>
+      <div class="field-wrap">
+        <label class="field-label">What is your primary goal? <span class="req">*</span></label>
+        <input type="hidden" name="Goal" id="goal-val" required>
+        <div class="options" id="goal">
+          <label class="option-btn"><input type="radio" name="_goal" value="Improve Performance"> Improve Performance</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="Prepare for Competition"> Prepare for Competition</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="Build Muscle"> Build Muscle</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="Fat Loss"> Fat Loss</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="Recovery"> Recovery</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="General Fitness"> General Fitness</label>
+          <label class="option-btn"><input type="radio" name="_goal" value="Other"> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPLETION TIMELINE -->
+    <div class="section">
+      <div class="section-title">Completion Timeline</div>
+      <div class="field-wrap">
+        <label class="field-label">Are you preparing for an event or competition? <span class="req">*</span></label>
+        <input type="hidden" name="Preparing for Event" id="event-val" required>
+        <div class="options" id="event">
+          <label class="option-btn"><input type="radio" name="_event" value="Yes"> Yes</label>
+          <label class="option-btn"><input type="radio" name="_event" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field-wrap" id="event-when-wrap" style="display:none;">
+        <label class="field-label">If yes, when is your event? <span class="req">*</span></label>
+        <input type="hidden" name="Event Timeline" id="event-when-val">
+        <div class="options" id="event-when">
+          <label class="option-btn"><input type="radio" name="_ewhen" value="Less than 1 month"> Less than 1 month</label>
+          <label class="option-btn"><input type="radio" name="_ewhen" value="1–3 months"> 1–3 months</label>
+          <label class="option-btn"><input type="radio" name="_ewhen" value="3–6 months"> 3–6 months</label>
+          <label class="option-btn"><input type="radio" name="_ewhen" value="6+ months"> 6+ months</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE LEVEL -->
+    <div class="section">
+      <div class="section-title">Experience Level</div>
+      <div class="field-wrap">
+        <label class="field-label">How long have you been training? <span class="req">*</span></label>
+        <input type="hidden" name="Experience Level" id="exp-val" required>
+        <div class="options" id="exp">
+          <label class="option-btn"><input type="radio" name="_exp" value="Less than 6 months"> Less than 6 months</label>
+          <label class="option-btn"><input type="radio" name="_exp" value="6 months – 1 year"> 6 months – 1 year</label>
+          <label class="option-btn"><input type="radio" name="_exp" value="1–3 years"> 1–3 years</label>
+          <label class="option-btn"><input type="radio" name="_exp" value="3–5 years"> 3–5 years</label>
+          <label class="option-btn"><input type="radio" name="_exp" value="5+ years"> 5+ years</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- CURRENT SUPPORT -->
+    <div class="section">
+      <div class="section-title">Current Support</div>
+      <div class="field-wrap">
+        <label class="field-label">Have you worked with a coach before? <span class="req">*</span></label>
+        <input type="hidden" name="Worked with Coach" id="coach-val" required>
+        <div class="options" id="coach">
+          <label class="option-btn"><input type="radio" name="_coach" value="Yes"> Yes</label>
+          <label class="option-btn"><input type="radio" name="_coach" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field-wrap">
+        <label class="field-label">Are you currently using any supplements? <span class="req">*</span></label>
+        <input type="hidden" name="Using Supplements" id="supp-val" required>
+        <div class="options" id="supp">
+          <label class="option-btn"><input type="radio" name="_supp" value="Yes"> Yes</label>
+          <label class="option-btn"><input type="radio" name="_supp" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field-wrap" id="supp-which-wrap" style="display:none;">
+        <label class="field-label">If yes, which supplements are you currently using? <span class="req">*</span></label>
+        <input type="hidden" name="Supplements Used" id="supp-which-val">
+        <div class="options" id="supp-which">
+          <label class="option-btn"><input type="checkbox" value="Whey Protein"> Whey Protein</label>
+          <label class="option-btn"><input type="checkbox" value="Creatine"> Creatine</label>
+          <label class="option-btn"><input type="checkbox" value="Pre-Workout"> Pre-Workout</label>
+          <label class="option-btn"><input type="checkbox" value="Electrolytes"> Electrolytes</label>
+          <label class="option-btn"><input type="checkbox" value="Recovery Supplements"> Recovery Supplements</label>
+          <label class="option-btn"><input type="checkbox" value="Other"> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- REQUIREMENT CAPTURE -->
+    <div class="section">
+      <div class="section-title">Requirement Capture</div>
+      <div class="field-wrap">
+        <label class="field-label">What kind of support are you looking for? <span class="req">*</span></label>
+        <input type="hidden" name="Support Required" id="req-val" required>
+        <div class="options" id="req">
+          <label class="option-btn"><input type="checkbox" value="Nutrition Guidance"> Nutrition Guidance</label>
+          <label class="option-btn"><input type="checkbox" value="Sports Supplement Guidance"> Sports Supplement Guidance</label>
+          <label class="option-btn"><input type="checkbox" value="Performance Optimization"> Performance Optimization</label>
+          <label class="option-btn"><input type="checkbox" value="Competition Preparation"> Competition Preparation</label>
+          <label class="option-btn"><input type="checkbox" value="Recovery Support"> Recovery Support</label>
+          <label class="option-btn"><input type="checkbox" value="Coaching"> Coaching</label>
+          <label class="option-btn"><input type="checkbox" value="Other"> Other</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="submit-wrap">
+      <button type="submit" class="btn-submit">Submit Application</button>
+    </div>
+  </form>
+
+  <!-- SUCCESS MESSAGE -->
+  <div id="success-msg">
+    <h2>🎉 Application Submitted!</h2>
+    <p>Thank you for applying to the Wellversed Athlete Support Programme.<br>We will get back to you shortly.</p>
+  </div>
+</div>
+
+<script>
+  // Pre-fill from URL params
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('name'))  document.querySelector('input[name="Name"]').value  = params.get('name');
+  if (params.get('phone')) document.querySelector('input[name="Mobile Number"]').value = params.get('phone');
+  if (params.get('email')) document.querySelector('input[name="Email Address"]').value = params.get('email');
+
+  // Option button toggle
+  document.querySelectorAll('.options').forEach(function(group) {
+    group.querySelectorAll('.option-btn').forEach(function(btn) {
+      var inp = btn.querySelector('input');
+      btn.addEventListener('click', function() {
+        if (inp.type === 'radio') {
+          group.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+          btn.classList.add('selected');
+          inp.checked = true;
+        } else {
+          btn.classList.toggle('selected');
+          inp.checked = btn.classList.contains('selected');
+        }
+        syncHidden(group);
+      });
+    });
+  });
+
+  function syncHidden(group) {
+    var id = group.id;
+    var vals = [];
+    group.querySelectorAll('input:checked').forEach(function(i) { vals.push(i.value); });
+    var hidden = document.getElementById(id + '-val');
+    if (hidden) hidden.value = vals.join(', ');
+
+    // Show/hide conditional fields
+    if (id === 'event') {
+      document.getElementById('event-when-wrap').style.display = vals[0] === 'Yes' ? 'block' : 'none';
+    }
+    if (id === 'supp') {
+      document.getElementById('supp-which-wrap').style.display = vals[0] === 'Yes' ? 'block' : 'none';
+    }
+  }
+
+  // Form submit via fetch
+  document.getElementById('apply-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = this.querySelector('.btn-submit');
+    btn.textContent = 'Submitting...';
+    btn.disabled = true;
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: new FormData(this)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data.success) {
+        document.getElementById('apply-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+      } else {
+        btn.textContent = 'Submit Application';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    })
+    .catch(function() {
+      btn.textContent = 'Submit Application';
+      btn.disabled = false;
+      alert('Network error. Please try again.');
+    });
+  });
+</script>
+
+</body>
+</html>
