@@ -307,10 +307,14 @@
   </div>
 </section>
 
-<!-- FILLOUT IFRAME OVERLAY -->
-<div id="fo" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:#000;">
-  <iframe id="fi" style="width:100%;height:100%;border:none;"></iframe>
-</div>
+<!-- Hidden Fillout popup trigger -->
+<button id="fillout-trigger"
+  data-fillout-id="1feKQAFWTEus"
+  data-fillout-embed-type="popup"
+  data-fillout-inherit-parameters
+  style="display:none;">
+</button>
+<script src="https://server.fillout.com/embed/v1/"></script>
 
 <script>
   document.querySelector('.btn-apply').addEventListener('click', function(e) {
@@ -325,13 +329,14 @@
       return;
     }
 
-    var url = 'https://forms.fillout.com/t/1feKQAFWTEus'
-      + '?Name=' + encodeURIComponent(name)
-      + '&Mobile%20Number=' + encodeURIComponent(phone)
-      + '&Email%20Address=' + encodeURIComponent(email);
+    var trigger = document.getElementById('fillout-trigger');
+    trigger.setAttribute('data-fillout-prefill', JSON.stringify({
+      "Name": name,
+      "Mobile Number": phone,
+      "Email Address": email
+    }));
 
-    document.getElementById('fi').src = url;
-    document.getElementById('fo').style.display = 'block';
+    trigger.click();
   });
 </script>
 
